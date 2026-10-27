@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light SaaS Theme */
+    --background: 220 14% 96%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 166 67% 43%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 166 67% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --border2: 220 13% 85%;
+    --input: 220 13% 91%;
+    --ring: 166 67% 43%;
+
+    --radius: 0.5rem;
+
+    --surface2: 220 14% 96%;
+    --surface3: 220 13% 91%;
+    --amber: 38 92% 50%;
+    --purple: 263 70% 50%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 166 67% 43%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 166 67% 96%;
+    --sidebar-accent-foreground: 166 67% 43%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 166 67% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom scrollbar */
+.crm-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.crm-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.crm-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 3px;
+}
+
+.crm-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+.crm-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+
+@keyframes crmLoadBar {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+
+.crm-load-bar {
+  animation: crmLoadBar 1.2s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crm-load-bar {
+    animation: none;
+    transform: translateX(0);
+    width: 100%;
+  }
+}
+
+/* Logo animation */
+@keyframes logoPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Sync flash on row update */
+@keyframes syncPulse {
+  0% { background: hsla(var(--primary), 0.15); }
+  100% { background: transparent; }
+}
+.sync-flash {
+  animation: syncPulse 0.6s ease;
+}
